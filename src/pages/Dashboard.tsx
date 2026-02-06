@@ -34,7 +34,7 @@ export default function Dashboard() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedHour, setSelectedHour] = useState(0);
 
-  const { tasks, subjects, addTask, addSubject } = useCalendarTasks();
+  const { tasks, subjects, addTask, updateTask, addSubject } = useCalendarTasks();
   const {
     assignments,
     addAssignment,
@@ -68,6 +68,7 @@ export default function Dashboard() {
               tasks={tasks}
               assignments={assignments}
               onCellClick={handleCellClick}
+              onUpdateTask={updateTask}
             />
           </>
         );

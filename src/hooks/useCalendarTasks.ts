@@ -37,6 +37,10 @@ export function useCalendarTasks() {
     saveTasks(tasks.filter(t => t.id !== id));
   };
 
+  const updateTask = (id: string, updates: Partial<Omit<CalendarTask, 'id'>>) => {
+    saveTasks(tasks.map(t => (t.id === id ? { ...t, ...updates } : t)));
+  };
+
   const addSubject = (name: string, color?: string) => {
     const existing = subjects.find(s => s.name.toLowerCase() === name.toLowerCase());
     if (existing) return existing;
@@ -54,6 +58,7 @@ export function useCalendarTasks() {
     tasks,
     subjects,
     addTask,
+    updateTask,
     removeTask,
     addSubject,
     getTasksForDate,
